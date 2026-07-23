@@ -1,0 +1,29 @@
+# ==========================================
+# 代理节点监控 - 配置文件模板
+# 复制为 config.yaml 并填入实际值
+# ==========================================
+
+target:
+  ip: 192.168.1.1           # 目标服务器 IP
+  ports:                    # 要监测的 TCP 端口
+    - 443
+    - 8080
+  http_test_urls:           # HTTP 测试地址
+    - http://192.168.1.1:8080/
+monitor:
+  interval: 10              # 采集间隔 (秒)
+  ping_count: 5             # 每轮 Ping 包数
+  timeout: 5                # 超时 (秒)
+  speed_test_interval: 300  # 网速测试间隔 (秒)
+  speed_test_url: http://192.168.1.1:8080/  # 测速下载地址
+xui:
+  panel_url: https://your-panel.example.com:port/webpath  # 3x-ui 面板地址
+  username: admin
+  password: your_password
+  traffic_poll_interval: 10  # 流量轮询间隔 (秒)
+alerts:
+  latency_threshold_ms: 500
+  packet_loss_threshold: 10
+database:
+  path: monitor_data.db
+  retention_days: 30
